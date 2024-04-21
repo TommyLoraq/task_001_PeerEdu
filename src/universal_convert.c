@@ -152,6 +152,15 @@ int main() {
             fprintf(stderr, "Puck you, Verter!");  //некорректное римское число
             return 1;
         }
+
+        char* romanTwo = arabicToRoman(arabicNumber);
+
+        if (strcmp(romanNumber, romanTwo) != 0) {
+            free(romanTwo);
+            fprintf(stderr, "Puck you, Verter!");
+            return 1;
+        }
+        free(romanTwo);
         printf("%d", arabicNumber);
 
     } else if (choice == 2) {

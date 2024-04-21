@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 typedef struct RomanNumeral {
@@ -32,6 +33,55 @@ int isValidRoman(char* roman) {
         }
     }
     return 1;
+}
+char* arabicToRoman(int arabicNum) {
+    char* result = calloc(16, sizeof(char));
+
+    if (arabicNum == 0) {
+        strcat(result, "nulla");
+        return result;
+    }
+
+    int thousands = arabicNum / 1000;
+    int hundreds = (arabicNum % 1000) / 100;
+    int tens = (arabicNum % 100) / 10;
+    int units = arabicNum % 10;
+
+    if (thousands == 1) strcat(result, "M");
+    if (thousands == 2) strcat(result, "MM");
+    if (thousands == 3) strcat(result, "MMM");
+
+    if (hundreds == 1) strcat(result, "C");
+    if (hundreds == 2) strcat(result, "CC");
+    if (hundreds == 3) strcat(result, "CCC");
+    if (hundreds == 4) strcat(result, "CD");
+    if (hundreds == 5) strcat(result, "D");
+    if (hundreds == 6) strcat(result, "DC");
+    if (hundreds == 7) strcat(result, "DCC");
+    if (hundreds == 8) strcat(result, "DCCC");
+    if (hundreds == 9) strcat(result, "CM");
+
+    if (tens == 1) strcat(result, "X");
+    if (tens == 2) strcat(result, "XX");
+    if (tens == 3) strcat(result, "XXX");
+    if (tens == 4) strcat(result, "XL");
+    if (tens == 5) strcat(result, "L");
+    if (tens == 6) strcat(result, "LX");
+    if (tens == 7) strcat(result, "LXX");
+    if (tens == 8) strcat(result, "LXXX");
+    if (tens == 9) strcat(result, "XC");
+
+    if (units == 1) strcat(result, "I");
+    if (units == 2) strcat(result, "II");
+    if (units == 3) strcat(result, "III");
+    if (units == 4) strcat(result, "IV");
+    if (units == 5) strcat(result, "V");
+    if (units == 6) strcat(result, "VI");
+    if (units == 7) strcat(result, "VII");
+    if (units == 8) strcat(result, "VIII");
+    if (units == 9) strcat(result, "IX");
+
+    return result;
 }
 
 int romanToArabic(char* roman) {
@@ -68,10 +118,21 @@ int main() {
     }
 
     int arabicNumber = romanToArabic(romanNumber);
+
     if (arabicNumber == -1) {
         fprintf(stderr, "Puck you, Verter!");  //некорректное римское число
         return 1;
     }
+
+    char* romanTwo = arabicToRoman(arabicNumber);
+
+    if (strcmp(romanNumber, romanTwo) != 0) {
+        free(romanTwo);
+        fprintf(stderr, "Puck you, Verter!");
+        return 1;
+    }
+    free(romanTwo);
+
     printf("%d", arabicNumber);
 
     return 0;
