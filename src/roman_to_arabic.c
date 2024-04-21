@@ -59,13 +59,13 @@ int main() {
     scanf("%s", romanNumber);
 
     if (strlen(romanNumber) > 15) {
-        printf("Puck you, Verter");  //слишком длинное число
+        fprintf(stderr, "Puck you, Verter");  //слишком длинное число
         return 1;
     }
 
     int arabicNumber = romanToArabic(romanNumber);
     if (arabicNumber == -1) {
-        printf("Puck you, Verter");  //некорректное римское число
+        fprintf(stderr, "Puck you, Verter");  //некорректное римское число
         return 1;
     }
     printf("%d", arabicNumber);

@@ -139,13 +139,13 @@ int main() {
         scanf("%s", romanNumber);
 
         if (strlen(romanNumber) > 15) {
-            printf("Puck you, Verter");  //слишком длинное число
+            fprintf(stderr, "Puck you, Verter");  //слишком длинное число
             return 1;
         }
 
         int arabicNumber = romanToArabic(romanNumber);
         if (arabicNumber == -1) {
-            printf("Puck you, Verter");  //некорректное римское число
+            fprintf(stderr, "Puck you, Verter");  //некорректное римское число
             return 1;
         }
         printf("%d", arabicNumber);
@@ -154,7 +154,7 @@ int main() {
         int arabic = 0;
         scanf("%d", &arabic);
         if (arabic > 3999) {
-            printf("Puck you, Verter");  //меньше число нужно арабское
+            fprintf(stderr, "Puck you, Verter");  //меньше число нужно арабское
             return 1;
         }
         char* roman = arabicToRoman(arabic);
@@ -164,7 +164,7 @@ int main() {
         free(roman);
 
     } else {
-        printf("Puck you, Verter");  //неверный пункт меню
+        fprintf(stderr, "Puck you, Verter");  //неверный пункт меню
         return 1;
     }
 
