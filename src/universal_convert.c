@@ -17,6 +17,10 @@ RomanNumeral romanNumerals[] = {{"MMM", 3000}, {"MM", 2000}, {"M", 1000}, {"CM",
 int isValidRoman(char* roman) {
     int len = strlen(roman);
     for (int i = 0; i < len; i++) {
+        if (roman[i] != 'I' && roman[i] != 'V' && roman[i] != 'X' && roman[i] != 'C' && roman[i] != 'D' &&
+            roman[i] != 'L' && roman[i] != 'M') {
+            return 0;
+        }
         if (i < len - 1 && roman[i] == roman[i + 1]) {
             if (roman[i] == 'V' || roman[i] == 'L' || roman[i] == 'D') {
                 return 0;  // V, L, D не могут повторяться подряд
