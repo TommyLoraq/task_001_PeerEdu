@@ -140,13 +140,13 @@ int main() {
 
         if (strlen(romanNumber) > 15) {
             printf("Puck you, Verter");  //слишком длинное число
-            return 0;
+            return 1;
         }
 
         int arabicNumber = romanToArabic(romanNumber);
         if (arabicNumber == -1) {
             printf("Puck you, Verter");  //некорректное римское число
-            return 0;
+            return 1;
         }
         printf("%d", arabicNumber);
 
@@ -155,7 +155,7 @@ int main() {
         scanf("%d", &arabic);
         if (arabic > 3999) {
             printf("Puck you, Verter");  //меньше число нужно арабское
-            return 0;
+            return 1;
         }
         char* roman = arabicToRoman(arabic);
 
@@ -165,7 +165,7 @@ int main() {
 
     } else {
         printf("Puck you, Verter");  //неверный пункт меню
-        return 0;
+        return 1;
     }
 
     return 0;

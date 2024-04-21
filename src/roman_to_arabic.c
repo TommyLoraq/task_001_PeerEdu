@@ -60,13 +60,13 @@ int main() {
 
     if (strlen(romanNumber) > 15) {
         printf("Puck you, Verter");  //слишком длинное число
-        return 0;
+        return 1;
     }
 
     int arabicNumber = romanToArabic(romanNumber);
     if (arabicNumber == -1) {
         printf("Puck you, Verter");  //некорректное римское число
-        return 0;
+        return 1;
     }
     printf("%d", arabicNumber);
 
