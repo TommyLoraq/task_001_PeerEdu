@@ -123,46 +123,40 @@ char* arabicToRoman(int arabicNum) {
 // УБИРАТЬ НЕ СТАЛ, НО ЭТОТ ВАРИАНТ ФУНКЦИИ БОЛЕЕ КРАСИВЫЙ И КОМПАКТНЫЙ, ОН НЕ МОЙ:)
 
 int main() {
-    printf("Выберите пункт меню:\n");
-    printf("1. Перевод римских чисел в арабские\n");
-    printf("2. Перевод арабских чисел в римские\n");
-    printf("Выход - Ctrl + C\n");
     int choice = 0;
     scanf("%d", &choice);
 
     if (choice == 1) {
         char romanNumber[100];
-        printf("Введите римскую цифру: ");
         scanf("%s", romanNumber);
 
         if (strlen(romanNumber) > 15) {
-            printf("Puck you, Verter\n");  //слишком длинное число
+            printf("Puck you, Verter");  //слишком длинное число
             return 1;
         }
 
         int arabicNumber = romanToArabic(romanNumber);
         if (arabicNumber == -1) {
-            printf("Puck you, Verter\n");  //некорректное римское число
+            printf("Puck you, Verter");  //некорректное римское число
             return 1;
         }
-        printf("Арабская цифра: %d\n", arabicNumber);
+        printf("%d", arabicNumber);
 
     } else if (choice == 2) {
         int arabic = 0;
-        printf("Введите арабское число:\n");
         scanf("%d", &arabic);
         if (arabic > 3999) {
-            printf("Puck you, Verter\n");  //меньше число нужно арабское
+            printf("Puck you, Verter");  //меньше число нужно арабское
             return 1;
         }
         char* roman = arabicToRoman(arabic);
 
-        printf("%s\n", roman);
+        printf("%s", roman);
 
         free(roman);
 
     } else {
-        printf("Puck you, Verter\n");  //неверный пункт меню
+        printf("Puck you, Verter");  //неверный пункт меню
         return 1;
     }
 

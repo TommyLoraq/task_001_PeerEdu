@@ -53,20 +53,19 @@ int romanToArabic(char* roman) {
 
 int main() {
     char romanNumber[100];
-    printf("Введите римскую цифру: ");
     scanf("%s", romanNumber);
 
     if (strlen(romanNumber) > 15) {
-        printf("Puck you, Verter\n");  //слишком длинное число
+        printf("Puck you, Verter");  //слишком длинное число
         return 1;
     }
 
     int arabicNumber = romanToArabic(romanNumber);
     if (arabicNumber == -1) {
-        printf("Puck you, Verter\n");  //некорректное римское число
+        printf("Puck you, Verter");  //некорректное римское число
         return 1;
     }
-    printf("Арабская цифра: %d\n", arabicNumber);
+    printf("%d", arabicNumber);
 
     return 0;
 }
