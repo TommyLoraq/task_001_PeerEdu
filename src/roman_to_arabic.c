@@ -31,6 +31,9 @@ int isValidRoman(char* roman) {
 }
 
 int romanToArabic(char* roman) {
+    if (strcmp(roman, "nulla") == 0 || strcmp(roman, "nihil") == 0 || strcmp(roman, "N") == 0) {
+        return 0;
+    }
     if (!isValidRoman(roman)) {
         return -1;  // Возвращаем -1, если римское число некорректно
     }
@@ -57,13 +60,13 @@ int main() {
 
     if (strlen(romanNumber) > 15) {
         printf("Puck you, Verter");  //слишком длинное число
-        return 1;
+        return 0;
     }
 
     int arabicNumber = romanToArabic(romanNumber);
     if (arabicNumber == -1) {
         printf("Puck you, Verter");  //некорректное римское число
-        return 1;
+        return 0;
     }
     printf("%d", arabicNumber);
 

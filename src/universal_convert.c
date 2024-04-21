@@ -32,6 +32,9 @@ int isValidRoman(char* roman) {
 }
 
 int romanToArabic(char* roman) {
+    if (strcmp(roman, "nulla") == 0 || strcmp(roman, "nihil") == 0 || strcmp(roman, "N") == 0) {
+        return 0;
+    }
     if (!isValidRoman(roman)) {
         return -1;  // Возвращаем -1, если римское число некорректно
     }
@@ -54,6 +57,11 @@ int romanToArabic(char* roman) {
 
 char* arabicToRoman(int arabicNum) {
     char* result = calloc(16, sizeof(char));
+
+    if (arabicNum == 0) {
+        strcat(result, "nulla");
+        return result;
+    }
 
     int thousands = arabicNum / 1000;
     int hundreds = (arabicNum % 1000) / 100;
@@ -132,13 +140,13 @@ int main() {
 
         if (strlen(romanNumber) > 15) {
             printf("Puck you, Verter");  //слишком длинное число
-            return 1;
+            return 0;
         }
 
         int arabicNumber = romanToArabic(romanNumber);
         if (arabicNumber == -1) {
             printf("Puck you, Verter");  //некорректное римское число
-            return 1;
+            return 0;
         }
         printf("%d", arabicNumber);
 
@@ -147,7 +155,7 @@ int main() {
         scanf("%d", &arabic);
         if (arabic > 3999) {
             printf("Puck you, Verter");  //меньше число нужно арабское
-            return 1;
+            return 0;
         }
         char* roman = arabicToRoman(arabic);
 
@@ -157,7 +165,7 @@ int main() {
 
     } else {
         printf("Puck you, Verter");  //неверный пункт меню
-        return 1;
+        return 0;
     }
 
     return 0;
