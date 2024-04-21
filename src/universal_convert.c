@@ -167,7 +167,8 @@ int main() {
     } else if (choice == 2) {
         int arabic = 0;
         scanf("%d", &arabic);
-        if (arabic > 3999) {
+
+        if (arabic > 3999 || arabic < 0) {
             fprintf(stderr, "Puck you, Verter!");  //меньше число нужно арабское
             return 1;
         }
